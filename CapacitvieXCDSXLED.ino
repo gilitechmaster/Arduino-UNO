@@ -1,5 +1,9 @@
 #include <CapacitiveSensor.h>
-CapacitiveSensor cs_7_5 = CapacitiveSensor(7, 5); //send, receive
+CapacitiveSensor cs_7_5 = CapacitiveSensor(7, 5);
+
+//7 = send, 5 = receive
+//7, 5 = CDS를 장착한다.
+
 int led = A0;
 
 

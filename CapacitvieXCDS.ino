@@ -1,28 +1,12 @@
 #include <CapacitiveSensor.h>
-//#include <PWM.h>
-
-//int32_t frequency1 = 1000; //1000헤르츠
-//int32_t frequency2 = 1000; 
 CapacitiveSensor cs_7_5 = CapacitiveSensor(7, 5); //send, receive
-
-//int led = 12;
-
 
 void setup(){
   
-  //bool success1 = SetPinFrequencySafe(7, frequency1);
-  //bool success2 = SetPinFrequencySafe(5, frequency2);
-  //pinMode(led, OUTPUT);
   Serial.begin(9600);
 }
 
 void loop(){
-  //pwmWrite(7,250);  
-  //pwmWrite(5,250);
-  //클립으로 9, GND
-  //100 = 4마이크로암페어
-  //250 = 16마이크로암페어
-  //100Hz
   
    CSread();
 }
@@ -36,10 +20,6 @@ void CSread(){
     
     delay(100);
   }
-//  if(cs > 400);{
-//  digitalWrite(led, HIGH);}
-//  if(cs < 400);{
-//digitalWrite(led, LOW);}
 }
 
 

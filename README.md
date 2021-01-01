@@ -1,6 +1,6 @@
 # arduinoCapacitiveSensorLibrary
 
-Capacitive.ino
+<strong>Capacitive.ino</strong>
 <p>
 정전센서 기본 코드
 <p>

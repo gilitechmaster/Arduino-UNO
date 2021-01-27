@@ -1,12 +1,8 @@
 #include <CapacitiveSensor.h>
-CapacitiveSensor cs_7_5 = CapacitiveSensor(7, 5);
-CapacitiveSensor cs_2_3 = CapacitiveSensor(2, 3);
-CapacitiveSensor cs_8_9 = CapacitiveSensor(8, 9);
 
-//7 = send, 5 = receive
-//7, 5 = CDS를 장착한다.
-//2 = send, 3 = receive
-//2, 3 = 액체를 장착한다.
+CapacitiveSensor cs_2_3 = CapacitiveSensor(2, 3);
+CapacitiveSensor cs_4_5 = CapacitiveSensor(4, 5);
+CapacitiveSensor cs_6_7 = CapacitiveSensor(6, 7);
 
 void setup(){
   pinMode(11, OUTPUT);
@@ -27,17 +23,18 @@ void loop(){
 }
 
 void CSread(){
-  unsigned long cs = cs_7_5.capacitiveSensor(50);
-  cs_7_5.set_CS_AutocaL_Millis(50);
-  cs_7_5.set_CS_Timeout_Millis(50);
   
-  unsigned long cs2 = cs_2_3.capacitiveSensor(50);
+  unsigned long cs1 = cs_2_3.capacitiveSensor(50);
   cs_2_3.set_CS_AutocaL_Millis(50);
   cs_2_3.set_CS_Timeout_Millis(50);
   
-  unsigned long cs3 = cs_8_9.capacitiveSensor(50);
-  cs_8_9.set_CS_AutocaL_Millis(50);
-  cs_8_9.set_CS_Timeout_Millis(50);
+  unsigned long cs2 = cs_4_5.capacitiveSensor(50);
+  cs_4_5.set_CS_AutocaL_Millis(50);
+  cs_4_5.set_CS_Timeout_Millis(50);
+  
+  unsigned long cs3 = cs_6_7.capacitiveSensor(50);
+  cs_6_7.set_CS_AutocaL_Millis(50);
+  cs_6_7.set_CS_Timeout_Millis(50);
 
 
 
@@ -64,14 +61,14 @@ if(cs2 < 1){
   }
 
 
-  if(cs > 100){
+  if(cs1 > 100){
     Serial.print("cds = ");
-    Serial.println(cs);
+    Serial.println(cs1);
     digitalWrite(13, HIGH);
   }
-  if(cs < 100){
+  if(cs1 < 100){
     Serial.print("cds = ");
-    Serial.println(cs);
+    Serial.println(cs1);
     digitalWrite(13, LOW);
   }
     

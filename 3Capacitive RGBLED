@@ -3,6 +3,7 @@
 CapacitiveSensor cs_2_3 = CapacitiveSensor(2, 3);
 CapacitiveSensor cs_4_5 = CapacitiveSensor(4, 5);
 CapacitiveSensor cs_6_7 = CapacitiveSensor(6, 7);
+CapacitiveSensor cs_8_9 = CapacitiveSensor(8, 9);
 
 void setup(){
   pinMode(11, OUTPUT);
@@ -36,7 +37,20 @@ void CSread(){
   cs_6_7.set_CS_AutocaL_Millis(50);
   cs_6_7.set_CS_Timeout_Millis(50);
 
+  unsigned long cs4 = cs_8_9.capacitiveSensor(50);
+  cs_8_9.set_CS_AutocaL_Millis(50);
+  cs_8_9.set_CS_Timeout_Millis(50);
 
+if(cs4 < 15000){
+    Serial.print("tilt = ");
+    Serial.println(cs4);
+    digitalWrite(12, HIGH);
+  }
+  if(cs4 > 15000){
+    Serial.print("tilt = ");
+    Serial.println(cs4);
+    digitalWrite(12, LOW);
+  }
 
 if(cs3 < 15000){
     Serial.print("touch = ");

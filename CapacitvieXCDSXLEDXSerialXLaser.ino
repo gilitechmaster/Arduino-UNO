@@ -1,65 +1,67 @@
 #include <CapacitiveSensor.h>
-CapacitiveSensor cs_7_5 = CapacitiveSensor(7, 5);
+CapacitiveSensor cs_2_3 = CapacitiveSensor(2, 3);
 
-//7 = send, 5 = receive
-//7, 5 = CDS를 장착한다.
+//2 = send, 3 = receive
+//2, 3 = CDS를 장착한다.
 
-int led = A0;
-int laser = 9;
+int outled = A0;
+int inled = 11;
+int i;
 
 void setup(){
-  pinMode(led, OUTPUT);
-  pinMode(laser, OUTPUT);
+  pinMode(outled, OUTPUT);
+  pinMode(inled, OUTPUT);
   Serial.begin(9600);
 }
 
 void loop(){
-  digitalWrite(laser, HIGH);
-   CSread();
+  CSread();
+   
+  analogWrite(inled, 1);
+  //LED를 미량만 방출한다.
+  //Capacitive에 2000이 나오므로
+  //2500~1500 사이만 LED on
+  
+  //for(i=0; i<90; i++){
+    //analogWrite(inled, i);
+    //delay(10);
+
+    //LED에 파동을 구현한다.
+    //최소 0 ~ 최대 90 이다.
+    //0.01초에 1씩 증가, 1초 1주기
+  //}
 }
 
 void CSread(){
-  unsigned long cs = cs_7_5.capacitiveSensor(50);
-  cs_7_5.set_CS_AutocaL_Millis(50);
-  cs_7_5.set_CS_Timeout_Millis(50);
+  unsigned long cs = cs_2_3.capacitiveSensor(50);
+  cs_2_3.set_CS_AutocaL_Millis(50);
+  cs_2_3.set_CS_Timeout_Millis(50);
+
+    //if(cs > 1 && cs < 2000){
+    //digitalWrite(outled, HIGH);
+  //}
+
   
-  if(cs > 1 && cs < 100){
-    Serial.print("수신전류 = 15㎂ ~ 270㎂, 작동저항 = 300k옴 이하, Capacitive = ");
-    Serial.println(cs);
-    digitalWrite(led, HIGH);
-  }
-  if(cs > 100 && cs < 350){
-    Serial.print("수신전류 = 1.5㎂ ~ 15㎂, 작동저항 = 300k ~ 1M옴, Capacitive = ");
-    Serial.println(cs);
-    digitalWrite(led, HIGH);
-  }
-  if(cs > 350 && cs < 3300){
-    Serial.print("수신전류 = 150㎁ ~ 1.5㎂, 작동저항 = 1M옴 ~ 10M옴, Capacitive = ");
-    Serial.println(cs);
-    digitalWrite(led, HIGH);
-  }
-  if(cs > 3300 && cs < 6400){
-    Serial.print("수신전류 = 150㎁ 이하, 작동저항 = 10M옴 ~ 20M옴, Capacitive = ");
-    Serial.println(cs);
-    digitalWrite(led, HIGH);
-  }
-  if(cs > 6400 && cs < 11000){
-    Serial.print("수신전류 = 150㎁ 이하, 작동저항 = 20M옴 ~ 30M옴, Capacitive = ");
-    Serial.println(cs);
-    digitalWrite(led, HIGH);
-  }
-  if(cs > 11000 && cs < 15000){
-    Serial.print("수신전류 = 150㎁ 이하, 작동저항 = 30M옴 ~ 40M옴, Capacitive = ");
-    Serial.println(cs);
-    digitalWrite(led, HIGH);
-  }
-  if(cs > 15000){
-    Serial.print("수신전류 = 오버로드, 작동저항 = 50M옴 이상, Capacitive = ");
-    Serial.println(cs);
-    digitalWrite(led, HIGH);
-  }
+  if(cs > 500){
+    digitalWrite(outled, LOW);
+      
+    }
+     
+      if(cs < 1){
+      digitalWrite(outled, HIGH);
+    }
+
+    //파동이 간섭되서 광-저항-전류가 변한다면
+    //1000이상을 기록하면서 LED꺼짐
+  
+
+  Serial.println(cs);
+
+  
+    delay(10);
+    //100으로 두면 0인데
+    //10으로 두면 읽기가 0.01초로 정밀해져서
+    //0~20까지 파동이 기록되기 시작한다.
+
     
-    delay(100);
-  
-  digitalWrite(led, LOW);
 }

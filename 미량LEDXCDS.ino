@@ -49,12 +49,12 @@ void CSread(){
     //1000이상을 기록하면서 LED꺼짐
 
 
-      if(cs1 > 10000){
+      if(cs1 > 14000){
         analogWrite(inled, 1);
         //LED를 미량만 방출한다.
       
     }
-    if(cs1 < 10000){
+    if(cs1 < 14000){
         analogWrite(inled, 0);
         //터치하면 LED 꺼짐
     }

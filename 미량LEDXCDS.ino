@@ -11,12 +11,14 @@ int inled = 11;
 int i;
 
 void setup(){
+  pinMode(LED_BUILTIN, OUTPUT);
   pinMode(outled, OUTPUT);
   pinMode(inled, OUTPUT);
   Serial.begin(9600);
 }
 
 void loop(){
+  digitalWrite(LED_BUILTIN, LOW);
   CSread();
   
 }

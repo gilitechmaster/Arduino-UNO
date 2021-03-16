@@ -6,6 +6,11 @@ CapacitiveSensor cs_2_3 = CapacitiveSensor(2, 3);
 //6, 7 = CDS를 장착한다.
 //2, 3 = 스위치를 장착한다.
 
+#include <SoftwareSerial.h>
+SoftwareSerial bluetooth(9, 10);
+//9 = RX, 10 = TX
+//HC06으로 값 모니터링
+
 int outled = A0;
 int inled = 11;
 int i;
@@ -15,6 +20,7 @@ void setup(){
   pinMode(outled, OUTPUT);
   pinMode(inled, OUTPUT);
   Serial.begin(9600);
+  bluetooth.begin(9600);
 }
 
 void loop(){
@@ -31,6 +37,11 @@ void CSread(){
   unsigned long cs1 = cs_2_3.capacitiveSensor(50);
   cs_2_3.set_CS_AutocaL_Millis(50);
   cs_2_3.set_CS_Timeout_Millis(50);
+  
+  bluetooth.print("CDS = ");
+  bluetooth.println(cs);
+  //bluetooth.print("터치 = ");
+  //bluetooth.println(cs1);
 
   Serial.print("CDS = ");
   Serial.println(cs);

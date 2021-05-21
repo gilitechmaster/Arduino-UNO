@@ -17,14 +17,14 @@ int i;
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(outled, OUTPUT);
-  pinMode(inled, OUTPUT);
+  pinMode(outled, OUTPUT);  //육안으로 정성확인할 외부 LED
+  pinMode(inled, OUTPUT); //미시광파 발생 실험용 LED
   Serial.begin(9600);
   bluetooth.begin(9600);
 }
 
 void loop() {
-  digitalWrite(LED_BUILTIN, LOW);
+  digitalWrite(LED_BUILTIN, LOW); //아두이노 보드 LED OFF
   CSread();
 
 }
@@ -36,10 +36,12 @@ void CSread() {
   unsigned long cs = cs_6_7.capacitiveSensor(50);  //분해능
   cs_6_7.set_CS_AutocaL_Millis(50); //자동으로 보정할 시간
   cs_6_7.set_CS_Timeout_Millis(500); // 반응속도 지연시 OL 설정
+                                     // 500은 값 15만 부터 OL이다.
+                                     // 42억 = 0L이다.
 
   unsigned long cs1 = cs_2_3.capacitiveSensor(50);
   cs_2_3.set_CS_AutocaL_Millis(50);
-  cs_2_3.set_CS_Timeout_Millis(50);
+  cs_2_3.set_CS_Timeout_Millis(50); // 50은 값 1.5만부터 OL이다.
 
   bluetooth.print(millis() - start);
   bluetooth.print("ms");
@@ -68,10 +70,6 @@ void CSread() {
     digitalWrite(outled, HIGH);
   }
 
-  //파동이 간섭되서 광-저항-전류가 변한다면
-  //1000이상을 기록하면서 LED꺼짐
-
-
   if (cs1 > 14000) {
     analogWrite(inled, 1);
     //LED를 미량만 방출한다.
@@ -82,14 +80,21 @@ void CSread() {
     //터치하면 LED 꺼짐
   }
 
-  //delay(0);
-  delay(10);
-  //100으로 두면 0인데
-  //10이하 설정시 읽기가 0.01초로 정밀해져서
-  //0~20까지 파동이 기록되기 시작한다.
-
+  delay(1);
+  //20ms 단위로 기록한다.
   //delayMicroseconds(10);
-
-
+  //마이크로초 값 수집은 실패
 
 }
+
+  //값 380 = 10k옴
+  //4500 = 10M옴
+  //9800 = 20M옴
+  //15000 = 30M옴
+  //20000 = 40M옴
+  //30000 = 50M옴
+  //40000 = 60M옴
+  //58000 = 70M옴
+  //78000 = 80M옴
+  //100000 = 90M옴
+  //130000 = 100M옴

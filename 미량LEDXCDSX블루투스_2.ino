@@ -72,6 +72,8 @@ void CSread() {
 
   if (cs1 > 14000) {
     analogWrite(inled, 1);
+    //analogWrite(inled, 10);
+    //analogWrite(inled, 100);
     //LED를 미량만 방출한다.
 
   }
@@ -81,7 +83,7 @@ void CSread() {
   }
 
   delay(1);
-  //20ms 단위로 기록한다.
+  //50ms 단위로 기록한다.
   //delayMicroseconds(10);
   //마이크로초 값 수집은 실패
 

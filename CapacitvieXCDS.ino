@@ -1,5 +1,5 @@
 #include <CapacitiveSensor.h>
-CapacitiveSensor cs_7_5 = CapacitiveSensor(7, 5); //send, receive
+CapacitiveSensor cs_8_9 = CapacitiveSensor(8, 9); //send, receive
 
 void setup(){
   
@@ -12,14 +12,14 @@ void loop(){
 }
 
 void CSread(){
-  unsigned long cs = cs_7_5.capacitiveSensor(50);
-  cs_7_5.set_CS_AutocaL_Millis(50);
-  cs_7_5.set_CS_Timeout_Millis(50);
-  if(cs > 1){
+  unsigned long cs = cs_8_9.capacitiveSensor(50);
+  cs_8_9.set_CS_AutocaL_Millis(50);
+  cs_8_9.set_CS_Timeout_Millis(50);
+  //if(cs > 1){
     Serial.println(cs);
     
-    delay(100);
-  }
+    delay(10);
+  //}
 }
 
 

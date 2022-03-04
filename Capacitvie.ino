@@ -1,5 +1,5 @@
 #include <CapacitiveSensor.h>
-CapacitiveSensor cs_7_5 = CapacitiveSensor(7, 5);
+CapacitiveSensor cs_7_2 = CapacitiveSensor(7, 2);
 
 void setup(){
   //InitTimerSafe();
@@ -11,11 +11,14 @@ void loop(){
 }
 
 void CSread(){
-  unsigned long cs = cs_7_5.capacitiveSensor(50);
-  cs_7_5.set_CS_AutocaL_Millis(50);
-  cs_7_5.set_CS_Timeout_Millis(500); // 50 = 1.5만 OL, 500 = 15만 OL
-  if(cs > 1){
+  unsigned long cs = cs_7_2.capacitiveSensor(50);
+  cs_7_2.set_CS_AutocaL_Millis(50);
+  cs_7_2.set_CS_Timeout_Millis(500); // 50 = 1.5만 OL, 500 = 15만 OL
+  if(cs >= 0){
     Serial.println(cs);
+  }
+  if(cs > 150000){
+    Serial.println("O.L 50M옴 이상");
   }
   delay(50);
 }

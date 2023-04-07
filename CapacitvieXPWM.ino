@@ -3,7 +3,6 @@
 
 int32_t frequency1 = 10; //10헤르츠
 CapacitiveSensor cs_6_4 = CapacitiveSensor(6, 4); //send, receive
-//PWM이 마이크로 암페어라서 합선될 수 있으므로 핀7과 핀12는 멀리한다.
 
 void setup(){
   //InitTimerSafe();

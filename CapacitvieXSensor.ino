@@ -12,7 +12,7 @@ void loop() {
 }
 
 void CSread() {
-  unsigned long cs = cs_8_9.capacitiveSensor(250);
+  unsigned long cs = cs_8_9.capacitiveSensor(50);
   cs_8_9.set_CS_AutocaL_Millis(50);
   cs_8_9.set_CS_Timeout_Millis(50);
   if(cs >= 0){
@@ -21,6 +21,9 @@ void CSread() {
   delay(100);
   }
 }
+
+//자작센서 물 적재시 값 = 0
+//자작센서 물 없을시 값 = O.L
 
 //A0 = 8핀, G = 9핀, + = 5V
 //센서를 사용함에 따라 센서반응시 저항이 증가함을 알 수 있다.

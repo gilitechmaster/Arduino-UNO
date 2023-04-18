@@ -44,9 +44,13 @@ void CSread() {
 //기본 값 = 0
 //90도 회전시 값 = O.L
 
-//Radial인덕터 10mH = 0
-//Radial인덕터 1mH = 0
-
 //온도센서 NTC-10KD-5J
 //기본 값 = 0
 
+//Radial인덕터 10mH = 0
+//Radial인덕터 1mH = 0
+
+//Ceramic 0.1uF 50V = 0
+//Ceramic 0.01uF 50V = 0
+//전해콘덴서 E/C 10uF 50V = 0
+//전해콘덴서 E/C 1uF 50V = 0

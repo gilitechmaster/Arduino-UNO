@@ -21,7 +21,7 @@ void CSread(){
   cs_7_5.set_CS_AutocaL_Millis(50);
   cs_7_5.set_CS_Timeout_Millis(50);
   
-  if(cs > 1 && cs < 100){
+  if(cs >= 0 && cs < 100){
     Serial.print("수신전류 = 15㎂ ~ 270㎂, 작동저항 = 300k옴 이하, Capacitive = ");
     Serial.println(cs);
     digitalWrite(led, HIGH);

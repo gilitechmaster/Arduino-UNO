@@ -1,0 +1,32 @@
+#include <CapacitiveSensor.h>
+CapacitiveSensor cs_2_3 = CapacitiveSensor(2, 3);
+
+#define inLED A0 //수광부
+#define outLED 13 //발광부
+
+void setup(){
+  pinMode(outLED, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int r = analogRead(inLED);
+  Serial.println(r);
+  digitalWrite(outLED, LOW);
+  delay(50);
+}
+
+void CSread(){
+  unsigned long cs1 = cs_2_3.capacitiveSensor(50);
+  cs_2_3.set_CS_AutocaL_Millis(50);
+  cs_2_3.set_CS_Timeout_Millis(50);
+        if(cs1 > 14000){
+        analogWrite(inLED, 1);
+        //LED를 미량만 방출한다.
+      
+    }
+    if(cs1 < 14000){
+        analogWrite(inLED, 0);
+        //터치하면 LED 꺼짐
+    }
+}

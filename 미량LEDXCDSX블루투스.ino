@@ -30,6 +30,7 @@ void loop(){
 }
 
 void CSread(){
+  long start = millis(); // 반응속도 체크
   unsigned long cs = cs_6_7.capacitiveSensor(50);
   cs_6_7.set_CS_AutocaL_Millis(50);
   cs_6_7.set_CS_Timeout_Millis(500); // 50 = 1.5만 OL, 500 = 15만 OL

@@ -12,7 +12,7 @@ void setup(){
 void loop() {
   int r = analogRead(inLED);
   Serial.println(r);
-  digitalWrite(outLED, LOW);
+  //digitalWrite(outLED, LOW);
   delay(50);
 }
 
@@ -21,12 +21,12 @@ void CSread(){
   cs_2_3.set_CS_AutocaL_Millis(50);
   cs_2_3.set_CS_Timeout_Millis(50);
         if(cs1 > 14000){
-        analogWrite(inLED, 1);
+        analogWrite(outLED, 1);
         //LED를 미량만 방출한다.
       
     }
     if(cs1 < 14000){
-        analogWrite(inLED, 0);
+        analogWrite(outLED, 0);
         //터치하면 LED 꺼짐
     }
 }

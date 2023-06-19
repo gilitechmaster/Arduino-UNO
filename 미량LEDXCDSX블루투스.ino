@@ -32,7 +32,7 @@ void loop(){
 void CSread(){
   unsigned long cs = cs_6_7.capacitiveSensor(50);
   cs_6_7.set_CS_AutocaL_Millis(50);
-  cs_6_7.set_CS_Timeout_Millis(50);
+  cs_6_7.set_CS_Timeout_Millis(500);
 
   unsigned long cs1 = cs_2_3.capacitiveSensor(50);
   cs_2_3.set_CS_AutocaL_Millis(50);

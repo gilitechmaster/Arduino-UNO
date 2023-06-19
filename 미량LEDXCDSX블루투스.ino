@@ -38,11 +38,17 @@ void CSread(){
   cs_2_3.set_CS_AutocaL_Millis(50);
   cs_2_3.set_CS_Timeout_Millis(50);
   
+  bluetooth.print(millis() - start);
+  bluetooth.print("ms");
+  bluetooth.print("\t");
   bluetooth.print("CDS = ");
   bluetooth.println(cs);
   //bluetooth.print("터치 = ");
   //bluetooth.println(cs1);
 
+  Serial.print(millis() - start);
+  Serial.print("ms");
+  Serial.print("\t");
   Serial.print("CDS = ");
   Serial.println(cs);
   //Serial.print("터치 = ");

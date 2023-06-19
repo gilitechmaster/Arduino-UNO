@@ -10,5 +10,5 @@ void loop() {
   int r = analogRead(inLED);
   Serial.println(r);
   digitalWrite(outLED, LOW);
-  delay(100);
+  delay(50);
 }

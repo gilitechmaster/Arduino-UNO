@@ -21,4 +21,4 @@ void loop() {
  
 }
 
-//https://kocoafab.cc/tutorial/view/757
+//https://kocoafab.cc/tutorial/view/757 에서 수정했다.

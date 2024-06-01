@@ -2,7 +2,7 @@
 CapacitiveSensor cs_2_3 = CapacitiveSensor(2, 3);
 
 #define inLED A0 //수광부
-#define outLED 13 //발광부
+#define outLED 11 //발광부
 
 void setup(){
   pinMode(outLED, OUTPUT);

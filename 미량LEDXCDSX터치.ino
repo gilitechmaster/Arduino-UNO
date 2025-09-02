@@ -2,7 +2,7 @@
 // Top이 22 x 22 mm이며 정육면체 스타일이다.
 
 #include <CapacitiveSensor.h>
-CapacitiveSensor cs_8_9 = CapacitiveSensor(8, 9);
+CapacitiveSensor cs_7_6 = CapacitiveSensor(7, 6);
 CapacitiveSensor cs_2_3 = CapacitiveSensor(2, 3);
 
 int inled = 11;
@@ -21,23 +21,27 @@ void CSread(){
   
   unsigned long cs = cs_2_3.capacitiveSensor(50);
   cs_2_3.set_CS_AutocaL_Millis(50);
-  cs_2_3.set_CS_Timeout_Millis(500); // 50 = 1.5만 OL, 500 = 15만 OL
+  cs_2_3.set_CS_Timeout_Millis(50); // 50 = 1.5만 OL, 500 = 15만 OL
 
-  unsigned long cs1 = cs_8_9.capacitiveSensor(50);
-  cs_8_9.set_CS_AutocaL_Millis(50);
-  cs_8_9.set_CS_Timeout_Millis(50);
+  unsigned long cs1 = cs_7_6.capacitiveSensor(50);
+  cs_7_6.set_CS_AutocaL_Millis(50);
+  cs_7_6.set_CS_Timeout_Millis(50);
   
-  if(cs >= 0){
-    Serial.println(cs);
+  if(cs1 < 10){
+    //Serial.println(cs1);
+    analogWrite(inled, 0);
   }
-  if(cs > 150000){
-    Serial.println("O.L 50M옴 이상");
-  }
-  if (cs1 > 14000) {
+  if(cs1 > 10){
+    //Serial.println(cs1);
     analogWrite(inled, 1);
   }
-  if (cs1 < 14000) {
-    analogWrite(inled, 0);
+  if (cs > 1) {
+    //analogWrite(inled, 1);
+    Serial.println(cs);
+  }
+  if (cs = 0) {
+    //analogWrite(inled, 0);
+    Serial.println(cs);
   }
     delay(100);
 }
